@@ -1,0 +1,103 @@
+/*
+Ejercicio 2:
+El programa badsort-ptr.c, cuyo código fuente se muestra a continuación, ha sido desarrollado para realizar una ordenación por el método de la burbuja aplicada a un array de pares (cadena de caracteres, entero) inicializado dentro del programa. El programa emplea aritmética de punteros para acceder a los distintos elementos del array durante el recorrido.
+Lamentablemente, el programador ha cometido algun/os error/es. Utilizando un depurador
+de C (p.ej.,gdb o ddd) el alumno debe encontrar y corregir el/los error/es.
+ */
+/*
+#include <stdio.h>
+typedef struct {
+	char data[4096];
+	int key;
+} item;
+item array[] = {
+		{"bill", 3},
+		{"neil", 4},
+		{"john", 2},
+		{"rick", 5},
+		{"alex", 1},
+};
+void sort(item*a, int n) {
+	int i = 0, j = 0;
+	int s = 1;
+	item *p;
+	for(; i < n & s != 0; i++) {
+		s = 0;
+		p = a;
+		j = n-1;
+		do {
+			if( p->key > (p+1)->key) {
+				item t =*p;
+				*p  =*(p+1);
+				*(p+1) = t;
+				s++;
+			}
+		} while ( --j >= 0 );
+	}
+}
+int main() {
+	int i;
+	sort(array,5);
+	for(i = 0; i < 5; i++)
+		printf("array[%d] = {%s, %d}\n",
+				i, array[i].data, array[i].key);
+	return 0;
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------Ejercicio Resuelto-----------------------------
+/*
+#include <stdio.h>
+typedef struct {
+    char data[4096];
+    int key;
+} item;
+
+item array[] = {
+    {"bill", 3},
+    {"neil", 4},
+    {"john", 2},
+    {"rick", 5},
+    {"alex", 1},
+};
+
+void sort(item *a, int n) {
+    int i = 0   , j = 1;
+    item* p;
+    while(i<n){
+        p = a+i;
+        j=0;
+        while (j < n-1){
+        	item *aux= a+j;
+            if( p->key < aux->key) {
+                item t = *p;
+ *p  = *(aux);
+ *(aux) = t;
+            }
+            j++;
+        }
+        i++;
+    }
+}
+
+int main() {
+    int i;
+    sort(array,5);
+    for(i = 0; i < 5; i++)
+        printf("array[%d] = {%s, %d}\n",
+                i, array[i].data, array[i].key);
+    return 0;
+}
+ */
+
